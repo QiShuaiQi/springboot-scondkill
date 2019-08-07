@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html
+        xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<style>
+ #demo{
+     margin-left: 520px;
+ }
+ .time{
+               color: black;
+              margin-left: 170px;
+               }
+    #a{
+           margin-left: 220px;
+            color: red;
+            text-decoration: none;
+    }
+
+#a1{
+    color: red;
+    text-decoration: none;
+}
+
+</style>
+
+<body>
+            <div id="demo">
+              <img src="img/o.jpg">
+                <br>
+               <div  class="time"></div>
+                <br>
+
+                <button id="a" style="color: red" onclick="success()"><a id="a1" href="/test" >立即秒杀</a></button>
+
+</div>
+</body>
+<script src="https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js">
+</script>
+<script >
+
+  function  mm() {
+      var start = new Date();  //开始时间
+      var end = new Date('2019/8/7,23:51:00');//结束时间，可以设置时间
+      //parseInt()取整
+    var   result = parseInt((end.getTime()-start.getTime())/1000);//计算出豪秒
+      ///  var d = parseInt(result/(24*60*60));//用总共的秒数除以1天的秒数
+      var h = parseInt(result/(60*60)%24);//精确小时，用去余
+      var m = parseInt(result/60%60);//剩余分钟就是用1小时等于60分钟进行趣余
+      var s = parseInt(result%60);
+
+
+    document.querySelector('.time').innerHTML="秒杀剩余"+h+'时'+m+'分'+s+'秒'
+
+
+
+
+      setTimeout("mm()",1000)
+      if (result<=0){
+          var  button =document.getElementById("a");
+          button.disabled=true;
+          button.innerHTML="秒杀结束";
+          document.querySelector('.time').innerHTML=""
+
+      }
+
+
+
+  }
+  function  success() {
+      alert("成功秒杀")
+  }
+
+    mm()
+
+
+
+</script>
+</html>
