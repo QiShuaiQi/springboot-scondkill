@@ -13,7 +13,7 @@ import java.util.concurrent.CountDownLatch;
 
 public class ScondController extends Thread {
     private Logger logger= LoggerFactory.getLogger(ScondController.class);
-    private static final int nut = 5000;
+    private static final int nut = 5000;//可以调换线程的并发数
     private static CountDownLatch count = new CountDownLatch(nut);
     RestTemplate restTemplate=new RestTemplate();
     private  String url="http://127.0.0.1:8080/end";
